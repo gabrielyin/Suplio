@@ -1,11 +1,10 @@
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 import TextInput from "@/components/TextInput";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="w-full max-w-lg mx-auto">
+    <div className="w-full max-w-md mx-auto">
       <Card>
 
         <div className="flex flex-col items-center my-6">
@@ -17,6 +16,7 @@ export default function Home() {
           <TextInput
             label="E-mail"
             placeholder="nome@email.com.br"
+            type="email"
           />
           <label>
             <div className="mb-1 flex justify-between">
