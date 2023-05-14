@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Pagination from "../Pagination";
 
 export default function SupplierTable({ children }) {
     const [suppliers, setSuppliers] = useState([
@@ -40,6 +41,7 @@ export default function SupplierTable({ children }) {
                     })}
                 </tbody>
             </table>
+            <Pagination />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Pagination from "../Pagination";
 
 export default function InventoryTable({ children }) {
     const colors = {
@@ -63,6 +64,7 @@ export default function InventoryTable({ children }) {
                     })}
                 </tbody>
             </table>
+            <Pagination />
         </div>
     )
 }
