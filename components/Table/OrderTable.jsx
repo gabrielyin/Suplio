@@ -1,29 +1,55 @@
 "use client"
 
-import { chipColor } from "@/utils/chip-color";
 import { useState } from "react"
 
 export default function OrderTable({ children }) {
+    const colors = {
+        Pendente: 'bg-amber-100 text-amber-600',
+        Confirmado: 'bg-green-100 text-green-600',
+        Cancelado: 'bg-red-100 text-red-600'
+    }
+
     const [orders, setOrders] = useState([
         {
             id: "24434",
             date: "09/05/2023",
             name: "Gabriel Yin",
-            valor: "R$ 498,00",
+            price: "R$ 498,00",
             status: "Pendente"
         },
         {
             id: "24434",
             date: "09/05/2023",
             name: "Gabriel Yin",
-            valor: "R$ 498,00",
+            price: "R$ 498,00",
             status: "Confirmado"
         },
         {
             id: "24434",
             date: "09/05/2023",
             name: "Gabriel Yin",
-            valor: "R$ 498,00",
+            price: "R$ 498,00",
+            status: "Cancelado"
+        },
+        {
+            id: "24434",
+            date: "09/05/2023",
+            name: "Gabriel Yin",
+            price: "R$ 498,00",
+            status: "Cancelado"
+        },
+        {
+            id: "24434",
+            date: "09/05/2023",
+            name: "Gabriel Yin",
+            price: "R$ 498,00",
+            status: "Cancelado"
+        },
+        {
+            id: "24434",
+            date: "09/05/2023",
+            name: "Gabriel Yin",
+            price: "R$ 498,00",
             status: "Cancelado"
         }
     ]);
@@ -44,12 +70,12 @@ export default function OrderTable({ children }) {
                 <tbody>
                     {orders.map((order) => {
                         return (
-                            <tr className="border-b">
+                            <tr className="border-b" key={order}>
                                 <td className="py-3 font-bold">{order.id}</td>
                                 <td className="py-3">{order.date}</td>
                                 <td className="py-3">{order.name}</td>
-                                <td className="py-3">{order.valor}</td>
-                                <td className="py-3"><span className={`py-1 px-2 rounded-full ${chipColor(order.status)}`}>{order.status}</span></td>
+                                <td className="py-3">{order.price}</td>
+                                <td className="py-3"><span className={`py-1 px-2 rounded-full ${colors[order.status]}`}>{order.status}</span></td>
                             </tr>
                         )
                     })}

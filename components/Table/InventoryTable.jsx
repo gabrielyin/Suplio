@@ -1,4 +1,41 @@
+"use client"
+
+import { useState } from "react"
+
 export default function InventoryTable({ children }) {
+    const colors = {
+        Pendente: 'bg-amber-100 text-amber-600',
+        Confirmado: 'bg-green-100 text-green-600',
+        Cancelado: 'bg-red-100 text-red-600',
+        OK: 'bg-green-100 text-green-600',
+        Médio: 'bg-amber-100 text-amber-600',
+        Baixo: 'bg-red-100 text-red-600',
+    }
+
+    const [inventory, setInventory] = useState([
+        {
+            sku: '#1234',
+            description: 'Iphone 14 248gb',
+            supplier: 'Apple',
+            price: 'R$ 490,00',
+            status: 'Médio'
+        },
+        {
+            sku: '#1234',
+            description: 'Iphone 14 248gb',
+            supplier: 'Apple',
+            price: 'R$ 490,00',
+            status: 'OK'
+        },
+        {
+            sku: '#1234',
+            description: 'Iphone 14 248gb',
+            supplier: 'Apple',
+            price: 'R$ 490,00',
+            status: 'Baixo'
+        }
+    ]);
+
     return (
         <div className="flex flex-col gap-6">
             {children}
@@ -13,13 +50,17 @@ export default function InventoryTable({ children }) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="border-b">
-                        <td className="py-3 font-bold">#24434</td>
-                        <td className="py-3">09/05/2023</td>
-                        <td className="py-3">Gabriel Yin</td>
-                        <td className="py-3">R$ 490,00</td>
-                        <td className="py-3"><span className="py-1 px-2 rounded-full bg-amber-100 text-amber-600">Pendente</span></td>
-                    </tr>
+                    {inventory.map((item) => {
+                        return (
+                            <tr className="border-b" key={item}>
+                                <td className="py-3 font-bold">{item.sku}</td>
+                                <td className="py-3">{item.description}</td>
+                                <td className="py-3">{item.supplier}</td>
+                                <td className="py-3">{item.price}</td>
+                                <td className="py-3"><span className={`py-1 px-2 rounded-full ${colors[item.status]}`}>{item.status}</span></td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
