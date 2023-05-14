@@ -42,7 +42,7 @@ export default function Home() {
         </div>
 
         <button
-          className="bg-charade-50 text-charade-900 py-2 rounded-xl tracking-wide border border-transparent mb-4"
+          className="bg-charade-50 hover:bg-charade-100 transition text-charade-900 py-2 rounded-xl tracking-wide border border-transparent mb-4"
         >
           Criar conta
         </button>

@@ -14,7 +14,7 @@ export default function VistorNav() {
             </Link>
             <Link
                 href="/register"
-                className="bg-transparent text-white py-2 w-[140px] rounded-xl tracking-wide border text-center"
+                className="bg-regal-blue-900 hover:bg-regal-blue-800 hover:bg-opacity-40 transition text-white py-2 w-[140px] rounded-xl tracking-wide border text-center"
 
             >
                 Criar conta

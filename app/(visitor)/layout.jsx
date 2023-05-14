@@ -1,5 +1,5 @@
 import Header from '@/components/Header/Header';
-import '../styles/globals.css';
+import '../../styles/globals.css';
 import VistorNav from '@/components/Header/VisitorNav';
 
 export const metadata = {
