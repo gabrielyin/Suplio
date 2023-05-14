@@ -1,11 +1,12 @@
+import Button from "@/components/Button";
 import Container from "@/components/Container";
-import InventoryTable from "@/components/Table/InventoryTable";
+import OrderTable from "@/components/Table/OrderTable";
 
 export default function Orders() {
     return (
         <main className="min-h-[calc(100vh-70px)] max-w-[1140px] mx-auto flex flex-col gap-5 py-12">
             <header className="px-6">
-                <h3 className="font-mukta text-2xl font-bold leading-6">Estoque</h3>
+                <h3 className="font-mukta text-2xl font-bold leading-6">Pedidos</h3>
                 <span className="text-charade-400">Gestão do seu estoque</span>
             </header>
             <Container>
@@ -20,19 +21,24 @@ export default function Orders() {
                             className="outline-none text-sm bg-charade-50 w-full"
                         />
                     </label>
-                    <div className="flex items-center gap-2">
-                        <span className="text-charade-300">
-                            Filtrar por status:
-                        </span>
-                        <select name="status" id="status" className="outline-none border rounded-lg py-1.5 px-2">
-                            <option value="">Todos</option>
-                            <option value="Confirmado">OK</option>
-                            <option value="Pendente">Médio</option>
-                            <option value="Cancelado">Baixo</option>
-                        </select>
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3">
+                            <span className="text-charade-300">
+                                Filtrar por status:
+                            </span>
+                            <select name="status" id="status" className="outline-none border rounded-lg py-1.5 px-2">
+                                <option value="">Todos</option>
+                                <option value="Confirmado">Confirmado</option>
+                                <option value="Pendente">Pendente</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                        <Button
+                            text="Adicionar Pedido"
+                        />
                     </div>
                 </header>
-                <InventoryTable />
+                <OrderTable />
             </Container>
         </main>
     )
