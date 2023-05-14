@@ -7,8 +7,9 @@ export default function Header({ children }) {
                 <div>
                     <Image
                         src="/assets/logo/logo-transparent.png"
-                        width={200}
-                        height={35.8}
+                        width={160}
+                        height={28.64}
+                        alt="suplio logo"
                     />
                 </div>
 

@@ -32,7 +32,7 @@ export default function SupplierTable({ children }) {
                 <tbody>
                     {suppliers.map((supplier) => {
                         return (
-                            <tr className="border-b" key={supplier}>
+                            <tr className="border-b" key={supplier.cnpj}>
                                 <td className="py-3 font-bold">{supplier.cnpj}</td>
                                 <td className="py-3">{supplier.rsocial}</td>
                                 <td className="py-3">{supplier.email}</td>

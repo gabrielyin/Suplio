@@ -2,34 +2,39 @@
 
 import { useState } from "react"
 import Pagination from "../Pagination";
+import { usePathname, useRouter } from "next/navigation";
+
+const colors = {
+    Pendente: 'bg-amber-100 text-amber-600',
+    Confirmado: 'bg-green-100 text-green-600',
+    Cancelado: 'bg-red-100 text-red-600',
+    OK: 'bg-green-100 text-green-600',
+    Médio: 'bg-amber-100 text-amber-600',
+    Baixo: 'bg-red-100 text-red-600',
+}
 
 export default function InventoryTable({ children }) {
-    const colors = {
-        Pendente: 'bg-amber-100 text-amber-600',
-        Confirmado: 'bg-green-100 text-green-600',
-        Cancelado: 'bg-red-100 text-red-600',
-        OK: 'bg-green-100 text-green-600',
-        Médio: 'bg-amber-100 text-amber-600',
-        Baixo: 'bg-red-100 text-red-600',
-    }
+
+    const pathname = usePathname().split('/')[2];
+    const router = useRouter();
 
     const [inventory, setInventory] = useState([
         {
-            sku: '#1234',
+            sku: '#125334',
             description: 'Iphone 14 248gb',
             supplier: 'Apple',
             price: 'R$ 490,00',
             status: 'Médio'
         },
         {
-            sku: '#1234',
+            sku: '#413234',
             description: 'Iphone 14 248gb',
             supplier: 'Apple',
             price: 'R$ 490,00',
             status: 'OK'
         },
         {
-            sku: '#1234',
+            sku: '#1478234',
             description: 'Iphone 14 248gb',
             supplier: 'Apple',
             price: 'R$ 490,00',
@@ -53,7 +58,11 @@ export default function InventoryTable({ children }) {
                 <tbody>
                     {inventory.map((item) => {
                         return (
-                            <tr className="border-b" key={item}>
+                            <tr
+                                className="border-b"
+                                key={item.sku}
+                                onClick={() => { router.push(`/auth/${pathname}/product?id=${encodeURIComponent(item.sku)}`) }}
+                            >
                                 <td className="py-3 font-bold">{item.sku}</td>
                                 <td className="py-3">{item.description}</td>
                                 <td className="py-3">{item.supplier}</td>

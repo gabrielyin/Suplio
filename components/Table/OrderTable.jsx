@@ -12,42 +12,42 @@ export default function OrderTable({ children }) {
 
     const [orders, setOrders] = useState([
         {
-            id: "24434",
+            id: "2443543434",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
             status: "Pendente"
         },
         {
-            id: "24434",
+            id: "244345334",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
             status: "Confirmado"
         },
         {
-            id: "24434",
+            id: "24344334",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
             status: "Cancelado"
         },
         {
-            id: "24434",
+            id: "2324435334",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
             status: "Cancelado"
         },
         {
-            id: "24434",
+            id: "24328435234",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
             status: "Cancelado"
         },
         {
-            id: "24434",
+            id: "26448534",
             date: "09/05/2023",
             name: "Gabriel Yin",
             price: "R$ 498,00",
@@ -71,7 +71,7 @@ export default function OrderTable({ children }) {
                 <tbody>
                     {orders.map((order) => {
                         return (
-                            <tr className="border-b" key={order}>
+                            <tr className="border-b" key={order.id}>
                                 <td className="py-3 font-bold">{order.id}</td>
                                 <td className="py-3">{order.date}</td>
                                 <td className="py-3">{order.name}</td>
