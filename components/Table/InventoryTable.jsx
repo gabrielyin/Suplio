@@ -59,7 +59,7 @@ export default function InventoryTable({ children }) {
                     {inventory.map((item) => {
                         return (
                             <tr
-                                className="border-b"
+                                className="border-b cursor-pointer hover:bg-gray-50 transition"
                                 key={item.sku}
                                 onClick={() => { router.push(`/auth/${pathname}/product?id=${encodeURIComponent(item.sku)}`) }}
                             >
