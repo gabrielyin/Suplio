@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mukta: ['Mukta', 'sans-serif']
+        mukta: ['Mukta', 'sans-serif'],
       },
       colors: {
-        'background': '#F5F9F3',
-        'jade': {
+        background: '#F5F9F3',
+        jade: {
           50: '#eefff6',
           100: '#d7ffeb',
           200: '#b2ffd9',
@@ -38,7 +38,7 @@ module.exports = {
           900: '#003e6a',
           950: '#002d51',
         },
-        'charade': {
+        charade: {
           50: '#f3f6f8',
           100: '#e1e6ec',
           200: '#c6d0db',
@@ -51,7 +51,7 @@ module.exports = {
           900: '#2b303b',
           950: '#1f232d',
         },
-      }
+      },
     },
   },
   plugins: [],
