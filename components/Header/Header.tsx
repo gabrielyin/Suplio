@@ -1,20 +1,25 @@
-import Image from "next/image";
+import Image from 'next/image'
+import { ReactNode } from 'react'
 
-export default function Header({ children }) {
-    return (
-        <header className="h-[70px] bg-regal-blue-900">
-            <div className="flex justify-between max-w-6xl mx-auto h-full items-center">
-                <div>
-                    <Image
-                        src="/assets/logo/logo-transparent.png"
-                        width={160}
-                        height={28.64}
-                        alt="suplio logo"
-                    />
-                </div>
+interface HeaderProps {
+  children?: ReactNode
+}
 
-                {children}
-            </div>
-        </header>
-    )
+export default function Header({ children }: HeaderProps) {
+  return (
+    <header className="h-[70px] bg-regal-blue-900">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between">
+        <div>
+          <Image
+            src="/assets/logo/logo-transparent.png"
+            width={160}
+            height={28.64}
+            alt="suplio logo"
+          />
+        </div>
+
+        {children}
+      </div>
+    </header>
+  )
 }

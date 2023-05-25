@@ -1,7 +1,8 @@
-import Header from '@/Header/Header'
-import '../../../styles/globals.css'
-import EmployeeNav from '@/Header/EmployeeNav'
 import { ReactNode } from 'react'
+
+import Header from '@/Header/Header'
+import AdminNav from '@/Header/AdminNav'
+import '../../../styles/globals.css'
 
 export const metadata = {
   icons: {
@@ -16,7 +17,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
     <html lang="pt-BR">
       <body className="bg-background">
         <Header>
-          <EmployeeNav />
+          <AdminNav />
         </Header>
 
         {children}

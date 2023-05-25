@@ -1,24 +1,18 @@
-import Link from "next/link";
-import Button from "../Button";
+import Link from 'next/link'
+import Button from '../Button'
 
 export default function VistorNav() {
-    return (
-        <nav className="flex gap-2">
-            <Link
-                href="/"
-            >
-                <Button
-                    width="w-[140px]"
-                    text="Login"
-                />
-            </Link>
-            <Link
-                href="/register"
-                className="bg-regal-blue-900 hover:bg-regal-blue-800 hover:bg-opacity-40 transition text-white py-2 w-[140px] rounded-xl tracking-wide border text-center"
-
-            >
-                Criar conta
-            </Link>
-        </nav>
-    )
+  return (
+    <nav className="flex gap-2">
+      <Link href="/">
+        <Button width="w-[140px]" text="Login" />
+      </Link>
+      <Link
+        href="/register"
+        className="w-[140px] rounded-xl border bg-regal-blue-900 py-2 text-center tracking-wide text-white transition hover:bg-regal-blue-800 hover:bg-opacity-40"
+      >
+        Criar conta
+      </Link>
+    </nav>
+  )
 }

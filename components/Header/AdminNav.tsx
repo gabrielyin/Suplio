@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function EmployeeNav() {
+export default function AdminNav() {
   const pathname = usePathname().split('/')
 
   const activeLink =
@@ -17,22 +17,32 @@ export default function EmployeeNav() {
     <nav className="flex h-full items-center gap-4">
       <Link
         className={pathname.includes('orders') ? activeLink : notActiveLink}
-        href={`/auth/team/orders`}
+        href={`/auth/admin/orders`}
       >
         Pedidos
       </Link>
+
       <Link
         className={pathname.includes('suppliers') ? activeLink : notActiveLink}
-        href={`/auth/team/suppliers`}
+        href={`/auth/admin/suppliers`}
       >
         Fornecedores
       </Link>
+
       <Link
         className={pathname.includes('inventory') ? activeLink : notActiveLink}
-        href={`/auth/team/inventory`}
+        href={`/auth/admin/inventory`}
       >
         Estoque
       </Link>
+
+      <Link
+        className={pathname.includes('equipe') ? activeLink : notActiveLink}
+        href={`/auth/admin/equipe`}
+      >
+        Time
+      </Link>
+
       <span>
         <div className="overflow-hidden rounded-full border-[2px] border-regal-blue-900 outline outline-[2px] outline-white">
           <Image
