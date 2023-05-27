@@ -1,10 +1,29 @@
+'use client'
+
 import Button from '@/Button'
 import Container from '@/Container'
+import ProductModal from '@/Modal/ProductInventory'
 import InventoryTable from '@/Table/InventoryTable'
+import { useState } from 'react'
 
 export default function Orders() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  function openModal() {
+    console.log('hello')
+
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
+  }
+
   return (
     <main className="mx-auto flex min-h-[calc(100vh-70px)] max-w-[1140px] flex-col gap-5 py-12">
+      {/* Inventory Modal */}
+      <ProductModal isModalOpen={isModalOpen} closeModal={closeModal} />
+
       {/* Title and Description */}
       <header className="px-6">
         <h3 className="font-mukta text-2xl font-bold leading-6">Estoque</h3>
@@ -49,7 +68,7 @@ export default function Orders() {
                 <option value="Cancelado">Baixo</option>
               </select>
             </div>
-            <Button text="Adicionar Produto" />
+            <Button onClick={openModal} text="Adicionar Produto" />
           </div>
         </header>
 
