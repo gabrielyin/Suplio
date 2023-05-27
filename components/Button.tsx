@@ -8,11 +8,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width?: string
 }
 
-export default function Button({ onClick, text, width, ...rest }: ButtonProps) {
+export default function Button({ text, width, ...rest }: ButtonProps) {
   return (
     <button
       className={`rounded-xl border border-transparent bg-jade-600 px-3 py-2 tracking-wide text-white transition hover:bg-jade-700 ${width}`}
-      onClick={() => onClick}
       {...rest}
     >
       {text}

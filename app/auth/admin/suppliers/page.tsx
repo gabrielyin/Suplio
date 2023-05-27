@@ -1,10 +1,29 @@
+'use client'
+
 import Button from '@/Button'
 import Container from '@/Container'
+import SupplierModal from '@/Modal/SupplierModal'
 import SupplierTable from '@/Table/SupplierTable'
+import { useState } from 'react'
 
 export default function Suppliers() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  function openModal() {
+    console.log('hello')
+
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
+  }
+
   return (
     <main className="mx-auto flex min-h-[calc(100vh-70px)] max-w-[1140px] flex-col gap-5 py-12">
+      {/* Modal */}
+      <SupplierModal isModalOpen={isModalOpen} closeModal={closeModal} />
+
       {/* Title and description */}
       <header className="px-6">
         <h3 className="font-mukta text-2xl font-bold leading-6">
@@ -37,7 +56,7 @@ export default function Suppliers() {
               className="w-full bg-charade-50 text-sm outline-none"
             />
           </label>
-          <Button text="Adidicionar Fornecedor" />
+          <Button onClick={openModal} text="Adidicionar Fornecedor" />
         </header>
 
         {/* Suppliers Table */}
