@@ -47,7 +47,6 @@ export default function InventoryTable({ children }: InvetoryTableProps) {
     async function getInventory() {
       const { data: products } = await api.get('/products')
 
-      console.log(products)
       setInventory(products)
     }
 

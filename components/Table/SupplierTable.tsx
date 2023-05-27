@@ -1,29 +1,37 @@
 'use client'
 
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import Pagination from '../Pagination'
 import { usePathname, useRouter } from 'next/navigation'
+import { api } from '../../lib/api'
 
 interface SupplierTableProps {
   children?: ReactNode
+}
+
+interface supplierType {
+  address: string
+  cnpj: string
+  email: string
+  name: string
+  rsocial: string
 }
 
 export default function SupplierTable({ children }: SupplierTableProps) {
   const pathname = usePathname().split('/')[2]
   const router = useRouter()
 
-  const [suppliers, setSuppliers] = useState([
-    {
-      cnpj: '81.385.875/0001-50',
-      rsocial: 'Apple Computers',
-      email: 'contato@apple.com.br',
-    },
-    {
-      cnpj: '63.762.690/0001-36',
-      rsocial: 'Logitech S.A',
-      email: 'contato@logitech.com.br',
-    },
-  ])
+  const [suppliers, setSuppliers] = useState([])
+
+  useEffect(() => {
+    async function getSuppliers() {
+      const { data: suppliers } = await api.get('/suppliers')
+
+      setSuppliers(suppliers)
+    }
+
+    getSuppliers()
+  }, [])
 
   return (
     <div className="flex flex-col gap-6">
@@ -37,7 +45,7 @@ export default function SupplierTable({ children }: SupplierTableProps) {
           </tr>
         </thead>
         <tbody>
-          {suppliers.map((supplier) => {
+          {suppliers.map((supplier: supplierType) => {
             return (
               <tr
                 className="cursor-pointer border-b transition hover:bg-gray-50"
