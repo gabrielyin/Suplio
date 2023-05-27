@@ -36,7 +36,7 @@ export function RegisterForm() {
         account: data.cnpj,
         cpf: data.cpf,
         email: data.email,
-        role: 'Admin',
+        role: 'admin',
         password: data.password,
       })
 

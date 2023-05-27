@@ -8,7 +8,7 @@ export default function AdminNav() {
   const pathname = usePathname().split('/')
 
   const activeLink =
-    'h-full cursor-pointer text-white flex items-center px-2 border-b-[3px] border-jade-600 text-jade-600'
+    'h-full cursor-pointer flex items-center px-2 border-b-[3px] border-jade-600 text-jade-600'
 
   const notActiveLink =
     'h-full cursor-pointer text-white flex items-center px-2 border-b-[3px] border-transparent hover:text-jade-800 hover:border-jade-800 transition'
