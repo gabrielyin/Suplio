@@ -1,8 +1,9 @@
 'use client'
 
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import Pagination from '../Pagination'
 import { usePathname, useRouter } from 'next/navigation'
+import { api } from '../../lib/api'
 
 interface Colors {
   [key: string]: string
@@ -21,41 +22,37 @@ interface InvetoryTableProps {
   children?: ReactNode
 }
 
+interface SupplierType {
+  id: string
+  rsocial: string
+}
+
 type Item = {
   sku: string
   description: string
-  supplier: string
+  supplier: SupplierType
   price: string
+  cost: string
   status: string
+  stock: number
 }
 
 export default function InventoryTable({ children }: InvetoryTableProps) {
   const pathname = usePathname().split('/')[2]
   const router = useRouter()
 
-  const [inventory, setInventory] = useState<Item[]>([
-    {
-      sku: '#125334',
-      description: 'Iphone 14 248gb',
-      supplier: 'Apple',
-      price: 'R$ 490,00',
-      status: 'Médio',
-    },
-    {
-      sku: '#413234',
-      description: 'Iphone 14 248gb',
-      supplier: 'Apple',
-      price: 'R$ 490,00',
-      status: 'OK',
-    },
-    {
-      sku: '#1478234',
-      description: 'Iphone 14 248gb',
-      supplier: 'Apple',
-      price: 'R$ 490,00',
-      status: 'Baixo',
-    },
-  ])
+  const [inventory, setInventory] = useState<Item[]>([])
+
+  useEffect(() => {
+    async function getInventory() {
+      const { data: products } = await api.get('/products')
+
+      console.log(products)
+      setInventory(products)
+    }
+
+    getInventory()
+  }, [])
 
   return (
     <div className="flex flex-col gap-6">
@@ -72,6 +69,17 @@ export default function InventoryTable({ children }: InvetoryTableProps) {
         </thead>
         <tbody>
           {inventory.map((item: Item) => {
+            const quantity = item.stock
+            let status
+
+            if (quantity < 10) {
+              status = 'Baixo'
+            } else if (quantity < 30) {
+              status = 'Médio'
+            } else {
+              status = 'OK'
+            }
+
             return (
               <tr
                 className="cursor-pointer border-b transition hover:bg-gray-50"
@@ -86,13 +94,11 @@ export default function InventoryTable({ children }: InvetoryTableProps) {
               >
                 <td className="py-3 font-bold">{item.sku}</td>
                 <td className="py-3">{item.description}</td>
-                <td className="py-3">{item.supplier}</td>
-                <td className="py-3">{item.price}</td>
+                <td className="py-3">{item.supplier.rsocial}</td>
+                <td className="py-3">R$ {item.price}</td>
                 <td className="py-3">
-                  <span
-                    className={`rounded-full px-2 py-1 ${colors[item.status]}`}
-                  >
-                    {item.status}
+                  <span className={`rounded-full px-2 py-1 ${colors[status]}`}>
+                    {status}
                   </span>
                 </td>
               </tr>

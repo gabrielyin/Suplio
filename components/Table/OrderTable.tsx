@@ -33,9 +33,6 @@ export default function OrderTable({ children }: OrderTableProps) {
       const { data: orders } = await api.get('/orders')
 
       setOrders(orders)
-      console.log(orders)
-
-      return orders
     }
 
     getOrders()
